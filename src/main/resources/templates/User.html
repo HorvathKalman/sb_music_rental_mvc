@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<table border="1" style="text-align: center;">
+    <tr>
+        <th>User Name</th>
+        <th>Music Id</th>
+        <th>Title</th>
+        <th>Length</th>
+    </tr>
+    <tr th:each="music : ${dto.getMusics()}">
+        <td th:text="${dto.getUsername()}"></td>
+        <td th:text="${music.getId()}"></td>
+        <td th:text="${music.getTitle()}"></td>
+        <td th:text="${music.getLength()}"></td>
+    </tr>
+</table>
+
+<form action="/user/add_music/" method="post">
+    <input type="hidden" name="id" th:value="${dto.getId()}" />
+    <input type="text" name="musicId" placeholder="Music Id" to add/>
+
+    <input type="submit" />
+</form>
+
+
+</body>
+</html>
